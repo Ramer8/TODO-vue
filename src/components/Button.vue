@@ -49,13 +49,13 @@ button[disabled]:hover {
    opacity: .2;
 }
 .primary {
-    background-color:lightpink; 
+    background-color:lightpink;
     border:none;
     padding:10px ;
-    font-size: 16px;
     border-radius: 8px;
     cursor:pointer;
     }
+
     .button-completed-false {
       border: 3px solid lightseagreen; 
       color: lightseagreen;
@@ -80,7 +80,15 @@ button[disabled]:hover {
              margin-left: 20px;
            margin-top: 6px;
         }  
-
+.input-bar Button {
+  display: block;
+    height: 70%;
+  
+     position: absolute; 
+    right:2%;
+    transform: translateX(-10%);
+    top: 17%;
+  }
 @media (prefers-color-scheme: light) {
   .button-completed-true {
     background-color: white;

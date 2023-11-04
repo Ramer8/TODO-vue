@@ -88,16 +88,6 @@
     border-radius: 2px;
   }
 
-.input-bar button {
-  display: block;
-    height: 70%;
-  
-     position: absolute; 
-    right:2%;
-    transform: translateX(-10%);
-    top: 17%;
-  }
-
   @media (prefers-color-scheme: dark) {
       .container {
         background-color:dimgrey;
