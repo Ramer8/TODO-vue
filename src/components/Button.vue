@@ -2,7 +2,9 @@
    <button 
    v-if="buttonClass"
    :class="buttonClass" 
-   @click="handleClick">
+   @click="handleClick"
+   :disabled="disabled"
+   >
        <slot></slot>
     </button>
          <button v-if="toggle ==false || toggle ==true" 
@@ -18,7 +20,8 @@
  export default {
     props: {
       toggle: String, 
-      buttonClass: String 
+      disabled: Boolean,
+      buttonClass: String
     },
     methods: {
       handleClick() {

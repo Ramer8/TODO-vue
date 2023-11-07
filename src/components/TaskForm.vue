@@ -16,8 +16,8 @@
         </div>
 </div>
 <Button 
-:disabled='!this.files.filter((objectToDelete) => objectToDelete.completed).length'
 buttonClass='secondary'
+:disabled='!this.files?.filter((objectToDelete) => objectToDelete.completed).length'
 @click="removeTaskObject">Eliminar completados</Button>
       </div>
 </template>
@@ -33,7 +33,7 @@ export default {
     components: {
 Button    },
 
-    methods: {
+methods: {
         removeTaskObject() {
             this.$emit('removeTaskObject');
         },
@@ -46,9 +46,6 @@ Button    },
         handleSubmit() {
             this.addTaskObject();
         },
-    },
-    components: { 
-        Button,
     },
     
 }
