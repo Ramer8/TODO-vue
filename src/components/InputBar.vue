@@ -16,7 +16,7 @@
 </Button>
        </div>
       </div>
- <Error v-if="inputError" >Ingrese una tarea por favor</Error>
+ <Error v-show="showModalError" >Ingrese una tarea por favor</Error>
  </template>
 
 <script>
@@ -38,17 +38,18 @@
     data() {
       return {
         newTaskObject: '',
-        inputError: false,
+        showModalError: false,
+        timeErrorMsg: 1000,
       };
       
     },
     methods:{
     addTaskObject() {
             if (this.newTaskObject.trim() === '') {
-          this.inputError = true;
+          this.showModalError = true;
           setTimeout(() => {
-            this.inputError = false;
-          }, 900);
+            this.showModalError = false;
+          }, this.timeErrorMsg);
           return; 
         }
         this.files.push({ id: Date.now(), task: this.newTaskObject, completed: false });
