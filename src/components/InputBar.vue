@@ -1,5 +1,5 @@
  <template>
- <div 
+ <div
  class="container"
  @submit.prevent="addTaskObject"
  >
@@ -9,54 +9,54 @@
          v-model="newTaskObject"
          @keyup.enter="addTaskObject"
        />
-   <Button 
+   <CustomButton
    buttonClass="primary"
    @click="addTaskObject"
    >Añadir
-</Button>
+</CustomButton>
        </div>
       </div>
- <Error v-show="showModalError" >Ingrese una tarea por favor</Error>
+ <ErrorComponent v-show="showModalError" >Ingrese una tarea por favor</ErrorComponent>
  </template>
 
 <script>
 
- import Button from './Button.vue'
- import Error from './Error.vue'
- export default { 
-    props: {
-      files: Object,
-    },
+import CustomButton from './CustomButton.vue';
+import ErrorComponent from './ErrorComponent.vue';
 
-    emits: ['input'],
+export default {
+  props: {
+    files: Object,
+  },
 
-    components: {
-        Button,
-        Error,
-    },
-    
-    data() {
-      return {
-        newTaskObject: '',
-        showModalError: false,
-        timeErrorMsg: 1000,
-      };
-      
-    },
-    methods:{
+  emits: ['input'],
+
+  components: {
+    CustomButton,
+    ErrorComponent,
+  },
+
+  data() {
+    return {
+      newTaskObject: '',
+      showModalError: false,
+      timeErrorMsg: 1000,
+    };
+  },
+  methods: {
     addTaskObject() {
-            if (this.newTaskObject.trim() === '') {
-          this.showModalError = true;
-          setTimeout(() => {
-            this.showModalError = false;
-          }, this.timeErrorMsg);
-          return; 
-        }
-        this.files.push({ id: Date.now(), task: this.newTaskObject, completed: false });
-    this.newTaskObject='' 
-},
-}    
- }
+      if (this.newTaskObject.trim() === '') {
+        this.showModalError = true;
+        setTimeout(() => {
+          this.showModalError = false;
+        }, this.timeErrorMsg);
+        return;
+      }
+      this.files.push({ id: Date.now(), task: this.newTaskObject, completed: false });
+      this.newTaskObject = '';
+    },
+  },
+};
 </script>
 <style scoped>
 .container  {
@@ -79,7 +79,7 @@
   display: block;
     padding: 1rem 2rem;
     width: 100%;
-    background: whitesmoke;  
+    background: whitesmoke;
     border: none;
     color:black;
     text-align: left;
@@ -94,7 +94,7 @@
         background-color:dimgrey;
         box-shadow: 3px 3px 3px gray
       }
-   } 
+   }
    @media (prefers-color-scheme: dark) {
       .input-bar input{
         background-color:grey;
@@ -103,8 +103,7 @@
         background-color:dimgrey;
         box-shadow: 3px 3px 3px gray
       }
-     
-   } 
- 
-</style>
 
+   }
+
+</style>

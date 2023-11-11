@@ -1,34 +1,34 @@
 <template>
-   <button 
+   <button
    v-if="buttonClass"
-   :class="buttonClass" 
+   :class="buttonClass"
    @click="handleClick"
    :disabled="disabled"
    >
        <slot></slot>
     </button>
-         <button v-if="toggle ==false || toggle ==true" 
+         <button v-if="toggle ==false || toggle ==true"
          @click="handleClick"
      v-bind:class="{'button-completed-true': toggle,
       'button-completed-false': !toggle}"
-       > 
-       {{toggle? "✔": "" }} 
-       </button> 
-      
+       >
+       {{toggle? "✔": "" }}
+       </button>
+
 </template>
 <script>
- export default {
-    props: {
-      toggle: String, 
-      disabled: Boolean,
-      buttonClass: String
+export default {
+  props: {
+    toggle: String,
+    disabled: Boolean,
+    buttonClass: String,
+  },
+  methods: {
+    handleClick() {
+      this.$emit('click');
     },
-    methods: {
-      handleClick() {
-        this.$emit('click');
-      },
-    },
-  };
+  },
+};
 </script>
 <style>
 button  {
@@ -60,7 +60,7 @@ button[disabled]:hover {
     }
 
     .button-completed-false {
-      border: 3px solid lightseagreen; 
+      border: 3px solid lightseagreen;
       color: lightseagreen;
       margin-right: 10px;
       border-radius: 6px;
@@ -72,22 +72,22 @@ button[disabled]:hover {
         border-radius: 6px;
         font-size: 12px;
         margin-left: 8px;
-      } 
+      }
     .secondary {
-          background-color: darkcyan; 
+          background-color: darkcyan;
           border-radius: 6px;
         }
         .container-form .secondary {
-            position: absolute; 
+            position: absolute;
             position:-webkit-sticky;
              margin-left: 20px;
            margin-top: 6px;
-        }  
+        }
 .input-bar Button {
   display: block;
     height: 70%;
-  
-     position: absolute; 
+
+     position: absolute;
     right:2%;
     transform: translateX(-10%);
     top: 17%;
@@ -97,7 +97,7 @@ button[disabled]:hover {
     background-color: white;
   }
   .button-completed-false  {
-    background-color: white; 
+    background-color: white;
   }
   button {
     color: white;
@@ -108,10 +108,10 @@ button[disabled]:hover {
 
   .button-completed-true {
     background-color: dimgray;
-    
+
   }
   .button-completed-false  {
-    background-color: dimgray; 
+    background-color: dimgray;
   }
 }
 

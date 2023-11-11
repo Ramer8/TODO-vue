@@ -2,53 +2,52 @@
      <div class="container-form" >
          <div
          v-if="files.length"
-         class="list" 
-         v-for="taskObject in files" 
+         class="list"
+         v-for="taskObject in files"
          :key="taskObject.id">
-        <div 
+        <div
  v-bind:class="{'no-text': taskObject.completed,'text': !taskObject.completed}" >
-    <Button
-    :toggle="taskObject.completed" 
+    <CustomButton
+    :toggle="taskObject.completed"
     @click="modifyTaskObject(taskObject)">
-  </Button>
- {{ taskObject.task }} 
-            <hr class="lineFormDivisory">            
+  </CustomButton>
+ {{ taskObject.task }}
+            <hr class="lineFormDivisory">
         </div>
 </div>
-<Button 
+<CustomButton
 buttonClass='secondary'
 :disabled='!this.files?.filter((objectToDelete) => objectToDelete.completed).length'
-@click="removeTaskObject">Eliminar completados</Button>
+@click="removeTaskObject">Eliminar completados</CustomButton>
       </div>
 </template>
 <script>
-import Button from './Button.vue';
+import CustomButton from './CustomButton.vue';
 
 export default {
 
-    props: {
-        files: Object,
-    },
+  props: {
+    files: Object,
+  },
 
-    components: {
-Button    },
+  components: { CustomButton },
 
-methods: {
-        removeTaskObject() {
-            this.$emit('removeTaskObject');
-        },
-        modifyTaskObject(taskObject) {
-            const index = this.files.indexOf(taskObject);
-            if (index !== -1) {
-                this.files[index].completed = !this.files[index].completed;
-            }
-        },
-        handleSubmit() {
-            this.addTaskObject();
-        },
+  methods: {
+    removeTaskObject() {
+      this.$emit('removeTaskObject');
     },
-    
-}
+    modifyTaskObject(taskObject) {
+      const index = this.files.indexOf(taskObject);
+      if (index !== -1) {
+        this.files[index].completed = !this.files[index].completed;
+      }
+    },
+    handleSubmit() {
+      this.addTaskObject();
+    },
+  },
+
+};
 </script>
 <style scoped>
 .container-form {
@@ -69,10 +68,10 @@ methods: {
     position: relative;
     font-size:19px;
   }
-  
+
 .no-text {
     text-decoration: line-through  lightseagreen 2px;
-    color: rgb(162, 161, 161);  
+    color: rgb(162, 161, 161);
     padding: 2px;
     font-size: 19px;
   }
@@ -87,15 +86,15 @@ methods: {
 @media (prefers-color-scheme: dark) {
 .list {color: cyan;
 }
-     
+
       .container {
         background-color:dimgrey;
         box-shadow: 3px 3px 3px gray
       }
-   } 
+   }
 
    @media (prefers-color-scheme: dark) {
-   
+
       .container {
         background-color:dimgrey;
         box-shadow: 3px 3px 3px gray
@@ -104,6 +103,6 @@ methods: {
         background-color:dimgrey;
         box-shadow: 3px 3px 3px gray
       }
-   } 
+   }
 
 </style>

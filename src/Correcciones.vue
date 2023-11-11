@@ -12,7 +12,6 @@ Button.vue === CORREJIDO !! ===
 
 - Busca que son los slots, lo puedes reemplazar por la prop msg.
 
-
 Header.vue. === CORREJIDO !! ===
 
 - El nombre es confuso, no veo que sea un Header si no toda la aplicación.
@@ -20,13 +19,10 @@ Header.vue. === CORREJIDO !! ===
 
 TaskForm.vue === CORREJIDO !! ===
 
-
 === CORREJIDO !! === - === true o === false, tenemos mejores maneras de escribirlo
 === CORREJIDO !! === - Las clases que añades al button deberían ser parte del componente button y dependiendo de la prop que le pasaras que aplicara unos estilos u otros
 
-
-
-Estilos: 
+Estilos:
 
 - El checkbutton y el texto de la tarea no están alineados
 === CORREJIDO !! === - El botón eliminar completados esta en un lugar muy aleatorio. O lo dejamos a la izquierda alineado con el listado o a la derecha o al centro pero no en un punto que no tenga sentido.
