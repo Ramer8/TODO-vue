@@ -1,11 +1,10 @@
 <template>
- <InputBar :files="files"/>
- <TaskForm :files="files"
- @removeTaskObject="removeTaskObject"/>
+  <InputBar :files="files" />
+  <TaskForm :files="files" @removeTaskObject="removeTaskObject" />
 </template>
 <script>
-import InputBar from './components/InputBar.vue';
-import TaskForm from './components/TaskForm.vue';
+import InputBar from "./components/InputBar.vue";
+import TaskForm from "./components/TaskForm.vue";
 
 export default {
   components: {
@@ -24,5 +23,4 @@ export default {
   },
 };
 </script>
-<style scoped>
-</style>
+<style scoped></style>

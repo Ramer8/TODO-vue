@@ -1,31 +1,40 @@
 <template>
-     <div class="container-form" >
-         <div
-         v-show="files.length"
-         class="list"
-         v-for="taskObject in files"
-         :key="taskObject.id">
-        <div
- v-bind:class="{'no-text': taskObject.completed,'text': !taskObject.completed}" >
-    <CustomButton
-    :toggle="taskObject.completed"
-    @click="modifyTaskObject(taskObject)">
-  </CustomButton>
- {{ taskObject.task }}
-            <hr class="lineFormDivisory">
-        </div>
-</div>
-<CustomButton
-buttonClass='secondary'
-:disabled='!this.files?.filter((objectToDelete) => objectToDelete.completed).length'
-@click="removeTaskObject">Eliminar completados</CustomButton>
+  <div class="container-form">
+    <div
+      v-show="files.length"
+      class="list"
+      v-for="taskObject in files"
+      :key="taskObject.id"
+    >
+      <div
+        v-bind:class="{
+          'no-text': taskObject.completed,
+          text: !taskObject.completed,
+        }"
+      >
+        <CustomButton
+          :toggle="taskObject.completed"
+          @click="modifyTaskObject(taskObject)"
+        >
+        </CustomButton>
+        {{ taskObject.task }}
+        <hr class="lineFormDivisory" />
       </div>
+    </div>
+    <CustomButton
+      buttonClass="secondary"
+      :disabled="
+        !this.files?.filter((objectToDelete) => objectToDelete.completed).length
+      "
+      @click="removeTaskObject"
+      >Eliminar completados</CustomButton
+    >
+  </div>
 </template>
 <script>
-import CustomButton from './CustomButton.vue';
+import CustomButton from "./CustomButton.vue";
 
 export default {
-
   props: {
     files: Object,
   },
@@ -34,7 +43,7 @@ export default {
 
   methods: {
     removeTaskObject() {
-      this.$emit('removeTaskObject');
+      this.$emit("removeTaskObject");
     },
     modifyTaskObject(taskObject) {
       const index = this.files.indexOf(taskObject);
@@ -46,63 +55,61 @@ export default {
       this.addTaskObject();
     },
   },
-
 };
 </script>
 <style scoped>
 .container-form {
-  background-color:white;
+  background-color: white;
   border-radius: 2px;
   margin-bottom: 20px;
   padding-bottom: 50px;
   padding-top: 10px;
   width: 100%;
-  box-shadow: 3px 3px 3px lightgray
+  box-shadow: 3px 3px 3px lightgray;
 }
 
 .list {
   width: 100%;
-    color:darkcyan;
-    padding-top: 5px;
-    padding-inline: 10px;
-    position: relative;
-    font-size:19px;
-  }
+  color: darkcyan;
+  padding-top: 5px;
+  padding-inline: 10px;
+  position: relative;
+  font-size: 19px;
+}
 
 .no-text {
-    text-decoration: line-through  lightseagreen 2px;
-    color: rgb(162, 161, 161);
-    padding: 2px;
-    font-size: 19px;
-  }
+  text-decoration: line-through lightseagreen 2px;
+  color: rgb(162, 161, 161);
+  padding: 2px;
+  font-size: 19px;
+}
 
 .text {
   padding: 2px;
-  }
-.lineFormDivisory{
-    margin-right: 40px;
+}
+.lineFormDivisory {
+  margin-right: 40px;
 }
 
 @media (prefers-color-scheme: dark) {
-.list {color: cyan;
+  .list {
+    color: cyan;
+  }
+
+  .container {
+    background-color: dimgrey;
+    box-shadow: 3px 3px 3px gray;
+  }
 }
 
-      .container {
-        background-color:dimgrey;
-        box-shadow: 3px 3px 3px gray
-      }
-   }
-
-   @media (prefers-color-scheme: dark) {
-
-      .container {
-        background-color:dimgrey;
-        box-shadow: 3px 3px 3px gray
-      }
-      .container-form {
-        background-color:dimgrey;
-        box-shadow: 3px 3px 3px gray
-      }
-   }
-
+@media (prefers-color-scheme: dark) {
+  .container {
+    background-color: dimgrey;
+    box-shadow: 3px 3px 3px gray;
+  }
+  .container-form {
+    background-color: dimgrey;
+    box-shadow: 3px 3px 3px gray;
+  }
+}
 </style>
