@@ -24,7 +24,7 @@ TaskForm.vue === CORREJIDO !! ===
 
 Estilos:
 
-- El checkbutton y el texto de la tarea no están alineados
+=== CORREJIDO !! === - El checkbutton y el texto de la tarea no están alineados
 === CORREJIDO !! === - El botón eliminar completados esta en un lugar muy aleatorio. O lo dejamos a la izquierda alineado con el listado o a la derecha o al centro pero no en un punto que no tenga sentido.
 === CORREJIDO !! === - El title de la pagina es ViteApp, podiamos cambiarlo por algo relacionado con la prueba
 

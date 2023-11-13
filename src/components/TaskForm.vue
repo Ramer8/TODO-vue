@@ -1,7 +1,7 @@
 <template>
      <div class="container-form" >
          <div
-         v-if="files.length"
+         v-show="files.length"
          class="list"
          v-for="taskObject in files"
          :key="taskObject.id">
