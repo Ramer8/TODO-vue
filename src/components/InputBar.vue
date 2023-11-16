@@ -2,18 +2,15 @@
   <div class="container" @submit.prevent="addTaskObject">
     <div class="input-bar">
       <input type="text" v-model="newTaskObject" @keyup.enter="addTaskObject" />
-      <CustomButton buttonClass="primary" @click="addTaskObject"
-        >Añadir
-      </CustomButton>
+      <CustomButtons buttonClass="primary" @click="addTaskObject">Añadir
+      </CustomButtons>
     </div>
   </div>
-  <ErrorComponent v-show="showModalError"
-    >Ingrese una tarea por favor</ErrorComponent
-  >
+  <ErrorComponent v-show="showModalError">Ingrese una tarea por favor</ErrorComponent>
 </template>
 
 <script>
-import CustomButton from "./CustomButton.vue";
+import CustomButtons from "./CustomButtons.vue";
 import ErrorComponent from "./ErrorComponent.vue";
 
 export default {
@@ -24,7 +21,7 @@ export default {
   emits: ["input"],
 
   components: {
-    CustomButton,
+    CustomButtons,
     ErrorComponent,
   },
 
@@ -91,10 +88,12 @@ export default {
     box-shadow: 3px 3px 3px gray;
   }
 }
+
 @media (prefers-color-scheme: dark) {
   .input-bar input {
     background-color: grey;
   }
+
   .container {
     background-color: dimgrey;
     box-shadow: 3px 3px 3px gray;

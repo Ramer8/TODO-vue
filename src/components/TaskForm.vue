@@ -1,45 +1,29 @@
 <template>
   <div class="container-form">
-    <div
-      v-show="files.length"
-      class="list"
-      v-for="taskObject in files"
-      :key="taskObject.id"
-    >
-      <div
-        v-bind:class="{
-          'no-text': taskObject.completed,
-          text: !taskObject.completed,
-        }"
-      >
-        <CustomButton
-          :toggle="taskObject.completed"
-          @click="modifyTaskObject(taskObject)"
-        >
-        </CustomButton>
+    <div v-show="files.length" class="list" v-for="taskObject in files" :key="taskObject.id">
+      <div v-bind:class="{
+        'no-text': taskObject.completed,
+        text: !taskObject.completed,
+      }">
+        <CustomButtons :toggle="taskObject.completed" @click="modifyTaskObject(taskObject)">
+        </CustomButtons>
         {{ taskObject.task }}
         <hr class="lineFormDivisory" />
       </div>
     </div>
-    <CustomButton
-      buttonClass="secondary"
-      :disabled="
-        !this.files?.filter((objectToDelete) => objectToDelete.completed).length
-      "
-      @click="removeTaskObject"
-      >Eliminar completados</CustomButton
-    >
+    <CustomButtons buttonClass="secondary" :disabled="!this.files?.filter((objectToDelete) => objectToDelete.completed).length
+      " @click="removeTaskObject">Eliminar completados</CustomButtons>
   </div>
 </template>
 <script>
-import CustomButton from "./CustomButton.vue";
+import CustomButtons from './CustomButtons.vue';
 
 export default {
   props: {
     files: Object,
   },
 
-  components: { CustomButton },
+  components: { CustomButtons },
 
   methods: {
     removeTaskObject() {
@@ -87,6 +71,7 @@ export default {
 .text {
   padding: 2px;
 }
+
 .lineFormDivisory {
   margin-right: 40px;
 }
@@ -107,6 +92,7 @@ export default {
     background-color: dimgrey;
     box-shadow: 3px 3px 3px gray;
   }
+
   .container-form {
     background-color: dimgrey;
     box-shadow: 3px 3px 3px gray;

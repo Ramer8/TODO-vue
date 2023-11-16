@@ -1,20 +1,11 @@
 <template>
-  <button
-    v-if="buttonClass"
-    :class="buttonClass"
-    @click="handleClick"
-    :disabled="disabled"
-  >
+  <button v-if="buttonClass" :class="buttonClass" @click="handleClick" :disabled="disabled">
     <slot></slot>
   </button>
-  <button
-    v-if="toggle == false || toggle == true"
-    @click="handleClick"
-    v-bind:class="{
-      'button-completed-true': toggle,
-      'button-completed-false': !toggle,
-    }"
-  >
+  <button v-if="toggle == false || toggle == true" @click="handleClick" v-bind:class="{
+    'button-completed-true': toggle,
+    'button-completed-false': !toggle,
+  }">
     {{ toggle ? "✔" : "" }}
   </button>
 </template>
