@@ -1,12 +1,17 @@
 <template>
   <div class="container" @submit.prevent="addTaskObject">
     <div class="input-bar">
+      <!-- <input type="text" v-model="newTaskObject" @keyup.enter="$emit(addTaskObject)" /> -->
       <input type="text" v-model="newTaskObject" @keyup.enter="addTaskObject" />
-      <CustomButtons buttonClass="primary" @click="addTaskObject">Añadir
+      <CustomButtons buttonClass="primary" @click="addTaskObject"
+        >Añadir
+        <!-- <CustomButtons buttonClass="primary" @click="$emit(addTaskObject)">Añadir -->
       </CustomButtons>
     </div>
   </div>
-  <ErrorComponent v-show="showModalError">Ingrese una tarea por favor</ErrorComponent>
+  <ErrorComponent v-show="showModalError"
+    >Ingrese una tarea por favor</ErrorComponent
+  >
 </template>
 
 <script>
@@ -18,7 +23,7 @@ export default {
     files: Object,
   },
 
-  emits: ["input"],
+  emits: ["addTaskObject"],
 
   components: {
     CustomButtons,
@@ -30,6 +35,7 @@ export default {
       newTaskObject: "",
       showModalError: false,
       timeErrorMsg: 1000,
+      newTask: "",
     };
   },
   methods: {
@@ -41,11 +47,13 @@ export default {
         }, this.timeErrorMsg);
         return;
       }
-      this.files.push({
+      this.newTask = {
         id: Date.now(),
         task: this.newTaskObject,
         completed: false,
-      });
+      };
+      this.files.push(this.newTask);
+      // this.$emit('addNewTask', this.newTask);
       this.newTaskObject = "";
     },
   },

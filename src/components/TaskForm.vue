@@ -1,29 +1,30 @@
 <template>
   <div class="container-form">
     <div v-show="files.length" class="list" v-for="taskObject in files" :key="taskObject.id">
-      <div v-bind:class="{
+      <div :class="{
         'no-text': taskObject.completed,
         text: !taskObject.completed,
       }">
-        <CustomButtons :toggle="taskObject.completed" @click="modifyTaskObject(taskObject)">
-        </CustomButtons>
-        {{ taskObject.task }}
-        <hr class="lineFormDivisory" />
+        <!-- <input class="mycheck" type="checkbox" id="checkbox" v-model="taskObject.completed" />
+        <label class="label" for="checkbox"> {{ taskObject.task }}</label> -->
+        <MyCheckBox :toggleCheckBox="taskObject"></MyCheckBox>
       </div>
+      <hr class="lineFormDivisory" />
     </div>
     <CustomButtons buttonClass="secondary" :disabled="!this.files?.filter((objectToDelete) => objectToDelete.completed).length
       " @click="removeTaskObject">Eliminar completados</CustomButtons>
   </div>
 </template>
 <script>
-import CustomButtons from './CustomButtons.vue';
+import CustomButtons from "./CustomButtons.vue";
+import MyCheckBox from "./MyCheckBox.vue";
 
 export default {
   props: {
     files: Object,
   },
 
-  components: { CustomButtons },
+  components: { CustomButtons, MyCheckBox },
 
   methods: {
     removeTaskObject() {
@@ -58,21 +59,28 @@ export default {
   padding-top: 5px;
   padding-inline: 10px;
   position: relative;
-  font-size: 19px;
+  font-size: 17px;
+  font-weight: 500;
 }
 
 .no-text {
   text-decoration: line-through lightseagreen 2px;
   color: rgb(162, 161, 161);
   padding: 2px;
-  font-size: 19px;
+  font-size: 17px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: scroll;
+  margin-right: 20px;
 }
 
 .text {
+  margin-right: 20px;
   padding: 2px;
 }
 
 .lineFormDivisory {
+  margin-top: 2px;
   margin-right: 40px;
 }
 

@@ -25,3 +25,63 @@ cambiarlo por algo relacionado con la prueba Funcionamiento: === CORREJIDO !!
 === - Si escribo una tarea, le doy a añadir y le vuelvo a dar añadir, aunque el
 texto esta en la barra de añadir tareas, se añade una tarea en blanco. - Me
 permite añadir tareas en blanco.
+
+<div></div>
+// Cambiar el formato de las props // Hacer un split. Necesitamos un componente
+button y uno para el checkbox.
+<p hecho pero no componetizado.></p>
+
+// Un commit para reparar el button // Un commit para reparar el checkbox //
+Modificar el error en TaskForm sobre mutar propiedades //
+https://vueschool.io/articles/vuejs-tutorials/how-to-structure-a-large-scale-vue-js-application/
+
+<script>
+export default {
+    props: {
+        value: {
+            type: String,
+            required: true
+        },
+        list: {
+            type: Array,
+            required: true
+        },
+        user: {
+            type: Object,
+            required: true
+        }
+    },
+    methods: { ///BAD////
+        openModal() {
+            this.value = 'test'
+        },
+        pushItem() {
+            this.list.push(0)
+        },
+        changeId() {
+            this.user.id = 1
+        }
+        ///GOOD///
+        openModal() {
+            this.$emit('input', 'test')
+        },
+        pushItem() {
+            this.$emit('push', 0)
+        },
+        changeId() {
+            this.$emit('change-id', 1)
+        }
+          this.$emit('addNewTask',
+            {
+                id: Date.now(),
+                task: this.newTaskObject,
+                completed: false,
+            }
+        )
+    },
+
+
+}
+</script>
+this.$emit('push', this.newTask); this.newTask = { id: Date.now(), task:
+this.newTaskObject, completed: false, }
