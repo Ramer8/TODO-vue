@@ -7,6 +7,8 @@ export default {
     props: {
         toggleCheckBox: Object,
     },
+    emits: ['update:modelValue']
+
 };
 </script>
 <style>

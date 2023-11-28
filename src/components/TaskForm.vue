@@ -7,7 +7,7 @@
       }">
         <!-- <input class="mycheck" type="checkbox" id="checkbox" v-model="taskObject.completed" />
         <label class="label" for="checkbox"> {{ taskObject.task }}</label> -->
-        <MyCheckBox :toggleCheckBox="taskObject"></MyCheckBox>
+        <CheckBoxForm :toggleCheckBox="taskObject" />
       </div>
       <hr class="lineFormDivisory" />
     </div>
@@ -16,16 +16,15 @@
   </div>
 </template>
 <script>
+import CheckBoxForm from "./CheckBoxForm.vue";
 import CustomButtons from "./CustomButtons.vue";
-import MyCheckBox from "./MyCheckBox.vue";
 
 export default {
   props: {
     files: Object,
   },
 
-  components: { CustomButtons, MyCheckBox },
-
+  components: { CustomButtons, CheckBoxForm },
   methods: {
     removeTaskObject() {
       this.$emit("removeTaskObject");
