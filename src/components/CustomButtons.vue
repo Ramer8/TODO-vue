@@ -1,21 +1,6 @@
 <template>
-  <button
-    v-if="buttonClass"
-    :class="buttonClass"
-    @click="handleClick"
-    :disabled="disabled"
-  >
+  <button :class="buttonClass" :disabled="disabled">
     <slot></slot>
-  </button>
-  <button
-    v-if="toggle == false || toggle == true"
-    @click="handleClick"
-    v-bind:class="{
-      'button-completed-true': toggle,
-      'button-completed-false': !toggle,
-    }"
-  >
-    {{ toggle ? "✔" : "" }}
   </button>
 </template>
 <script>
@@ -25,11 +10,11 @@ export default {
     disabled: Boolean,
     buttonClass: String,
   },
-  methods: {
-    handleClick() {
-      this.$emit("click");
-    },
-  },
+  // methods: {
+  //   handleClick() {
+  //     this.$emit("click");
+  //   },
+  // },
 };
 </script>
 <style>

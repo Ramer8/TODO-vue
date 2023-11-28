@@ -1,17 +1,13 @@
 <template>
-  <div class="container" @submit.prevent="addTaskObject">
+  <div class="container" @submit.prevent="$emit('addTaskObject', newTaskObject)">
     <div class="input-bar">
-      <!-- <input type="text" v-model="newTaskObject" @keyup.enter="$emit(addTaskObject)" /> -->
-      <input type="text" v-model="newTaskObject" @keyup.enter="addTaskObject" />
-      <CustomButtons buttonClass="primary" @click="addTaskObject"
-        >Añadir
-        <!-- <CustomButtons buttonClass="primary" @click="$emit(addTaskObject)">Añadir -->
+      <input type="text" v-model="newTaskObject" @keypress.enter="$emit('addTaskObject', newTaskObject)" />
+      <CustomButtons buttonClass="primary" @click="$emit('addTaskObject', newTaskObject)">Añadir
       </CustomButtons>
+
     </div>
   </div>
-  <ErrorComponent v-show="showModalError"
-    >Ingrese una tarea por favor</ErrorComponent
-  >
+  <ErrorComponent v-show="showModalError">Ingrese una tarea por favor</ErrorComponent>
 </template>
 
 <script>
@@ -20,7 +16,7 @@ import ErrorComponent from "./ErrorComponent.vue";
 
 export default {
   props: {
-    files: Object,
+    showModalError: Boolean
   },
 
   emits: ["addTaskObject"],
@@ -32,30 +28,8 @@ export default {
 
   data() {
     return {
-      newTaskObject: "",
-      showModalError: false,
-      timeErrorMsg: 1000,
-      newTask: "",
+      newTaskObject: '',
     };
-  },
-  methods: {
-    addTaskObject() {
-      if (this.newTaskObject.trim() === "") {
-        this.showModalError = true;
-        setTimeout(() => {
-          this.showModalError = false;
-        }, this.timeErrorMsg);
-        return;
-      }
-      this.newTask = {
-        id: Date.now(),
-        task: this.newTaskObject,
-        completed: false,
-      };
-      this.files.push(this.newTask);
-      // this.$emit('addNewTask', this.newTask);
-      this.newTaskObject = "";
-    },
   },
 };
 </script>

@@ -30,12 +30,6 @@ export default {
     removeTaskObject() {
       this.$emit("removeTaskObject");
     },
-    modifyTaskObject(taskObject) {
-      const index = this.files.indexOf(taskObject);
-      if (index !== -1) {
-        this.files[index].completed = !this.files[index].completed;
-      }
-    },
     handleSubmit() {
       this.addTaskObject();
     },
