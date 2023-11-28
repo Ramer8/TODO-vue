@@ -14,7 +14,7 @@ export default {
   data() {
     return {
       files: [],
-      newTaskObject: '',
+      newTaskObject: "",
       showModalError: false,
       timeErrorMsg: 1000,
     };
@@ -24,12 +24,13 @@ export default {
       this.files = this.files.filter((taskObject) => !taskObject.completed);
     },
     addTaskObject(data) {
-      this.newTaskObject = data
+      this.newTaskObject = data;
       if (this.newTaskObject.trim() === "") {
         this.showModalError = true;
         setTimeout(() => {
           this.showModalError = false;
-        }, this.timeErrorMsg); return;
+        }, this.timeErrorMsg);
+        return;
       }
       this.newTask = {
         id: Date.now(),
@@ -38,7 +39,6 @@ export default {
       };
       this.files.push(this.newTask);
     },
-
   },
 };
 </script>

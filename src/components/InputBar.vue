@@ -1,13 +1,24 @@
 <template>
-  <div class="container" @submit.prevent="$emit('addTaskObject', newTaskObject)">
+  <div
+    class="container"
+    @submit.prevent="$emit('addTaskObject', newTaskObject)"
+  >
     <div class="input-bar">
-      <input type="text" v-model="newTaskObject" @keypress.enter="$emit('addTaskObject', newTaskObject)" />
-      <CustomButtons buttonClass="primary" @click="$emit('addTaskObject', newTaskObject)">Añadir
+      <input
+        type="text"
+        v-model="newTaskObject"
+        @keypress.enter="$emit('addTaskObject', newTaskObject)"
+      />
+      <CustomButtons
+        buttonClass="primary"
+        @click="$emit('addTaskObject', newTaskObject)"
+        >Añadir
       </CustomButtons>
-
     </div>
   </div>
-  <ErrorComponent v-show="showModalError">Ingrese una tarea por favor</ErrorComponent>
+  <ErrorComponent v-show="showModalError"
+    >Ingrese una tarea por favor</ErrorComponent
+  >
 </template>
 
 <script>
@@ -16,7 +27,7 @@ import ErrorComponent from "./ErrorComponent.vue";
 
 export default {
   props: {
-    showModalError: Boolean
+    showModalError: Boolean,
   },
 
   emits: ["addTaskObject"],
@@ -28,7 +39,7 @@ export default {
 
   data() {
     return {
-      newTaskObject: '',
+      newTaskObject: "",
     };
   },
 };
