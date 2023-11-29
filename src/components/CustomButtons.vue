@@ -10,11 +10,6 @@ export default {
     disabled: Boolean,
     buttonClass: String,
   },
-  // methods: {
-  //   handleClick() {
-  //     this.$emit("click");
-  //   },
-  // },
 };
 </script>
 <style>

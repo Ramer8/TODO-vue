@@ -27,13 +27,13 @@ texto esta en la barra de añadir tareas, se añade una tarea en blanco. - Me
 permite añadir tareas en blanco.
 
 <div></div>
-// Cambiar el formato de las props // Hacer un split. 
-Necesitamos un componente
+// Cambiar el formato de las props // Hacer un split. Necesitamos un componente
 button y uno para el checkbox.
 <p hecho y componetizado.></p>
 
 // Un commit para reparar el button // Un commit para reparar el checkbox //
-Modificar el error en TaskForm sobre mutar propiedades //reparado el de input, este se borro.
+Modificar el error en TaskForm sobre mutar propiedades //reparado el de input,
+este se borro.
 https://vueschool.io/articles/vuejs-tutorials/how-to-structure-a-large-scale-vue-js-application/
 
 <script>
@@ -86,7 +86,6 @@ export default {
 </script>
 this.$emit('push', this.newTask); this.newTask = { id: Date.now(), task:
 this.newTaskObject, completed: false, }
-
 
 <p>
    READY! - TaskForm 

@@ -26,7 +26,7 @@ export default {
     addTaskObject(data) {
       this.newTaskObject = data;
 
-      const emptyInput = this.newTaskObject.length
+      const emptyInput = this.newTaskObject.length;
       if (emptyInput === 0) {
         this.showModalError = true;
         setTimeout(() => {
@@ -42,9 +42,7 @@ export default {
       };
       this.files.push(this.newTask);
     },
-
   },
-
 };
 </script>
 <style scoped></style>
