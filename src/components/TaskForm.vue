@@ -1,31 +1,18 @@
 <template>
   <div class="container-form">
-    <div
-      v-show="files.length"
-      class="list"
-      v-for="taskObject in files"
-      :key="taskObject.id"
-    >
-      <div
-        :class="{
-          'no-text': taskObject.completed,
-          text: !taskObject.completed,
-        }"
-      >
+    <div v-show="files.length" class="list" v-for="taskObject in files" :key="taskObject.id">
+      <div :class="{
+        'no-text': taskObject.completed,
+        text: !taskObject.completed,
+      }">
         <!-- <input class="mycheck" type="checkbox" id="checkbox" v-model="taskObject.completed" />
         <label class="label" for="checkbox"> {{ taskObject.task }}</label> -->
         <CheckBoxForm :toggleCheckBox="taskObject" />
       </div>
       <hr class="lineFormDivisory" />
     </div>
-    <CustomButtons
-      buttonClass="secondary"
-      :disabled="
-        !this.files?.filter((objectToDelete) => objectToDelete.completed).length
-      "
-      @click="removeTaskObject"
-      >Eliminar completados</CustomButtons
-    >
+    <CustomButtons buttonClass="secondary" :disabled="isTaskListEmpty" @click="removeTaskObject">Eliminar completados
+    </CustomButtons>
   </div>
 </template>
 <script>
@@ -46,6 +33,12 @@ export default {
       this.addTaskObject();
     },
   },
+  computed: {
+    isTaskListEmpty() {
+      const tasksCompleted = this.files?.filter((objectToDelete) => objectToDelete.completed)
+      return tasksCompleted.length === 0
+    }
+  }
 };
 </script>
 <style scoped>

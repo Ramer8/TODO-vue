@@ -27,12 +27,13 @@ texto esta en la barra de añadir tareas, se añade una tarea en blanco. - Me
 permite añadir tareas en blanco.
 
 <div></div>
-// Cambiar el formato de las props // Hacer un split. Necesitamos un componente
+// Cambiar el formato de las props // Hacer un split. 
+Necesitamos un componente
 button y uno para el checkbox.
-<p hecho pero no componetizado.></p>
+<p hecho y componetizado.></p>
 
 // Un commit para reparar el button // Un commit para reparar el checkbox //
-Modificar el error en TaskForm sobre mutar propiedades //
+Modificar el error en TaskForm sobre mutar propiedades //reparado el de input, este se borro.
 https://vueschool.io/articles/vuejs-tutorials/how-to-structure-a-large-scale-vue-js-application/
 
 <script>
@@ -85,3 +86,20 @@ export default {
 </script>
 this.$emit('push', this.newTask); this.newTask = { id: Date.now(), task:
 this.newTaskObject, completed: false, }
+
+
+<p>
+   READY! - TaskForm 
+- !this.files?.filter((objectToDelete) => objectToDelete.completed).length
+    - Esto lo vimos en clase, es muy difícil de leer, mejor en una computada mas clara.
+
+App READY!
+- La función addTaskObject es muy compleja y difícil de entender.
+- timeErrorMsg es una constante, declarara como tal.
+
+General_
+
+- Comentarios borrados.
+- Estructura de carpetas, te pase un link sobre ello. Intenta aplicarlo
+</div>
+</p>

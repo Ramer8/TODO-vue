@@ -6,6 +6,7 @@
 import InputBar from "./components/InputBar.vue";
 import TaskForm from "./components/TaskForm.vue";
 
+const timeErrorMsg = 1000;
 export default {
   components: {
     InputBar,
@@ -16,7 +17,6 @@ export default {
       files: [],
       newTaskObject: "",
       showModalError: false,
-      timeErrorMsg: 1000,
     };
   },
   methods: {
@@ -25,13 +25,16 @@ export default {
     },
     addTaskObject(data) {
       this.newTaskObject = data;
-      if (this.newTaskObject.trim() === "") {
+
+      const emptyInput = this.newTaskObject.length
+      if (emptyInput === 0) {
         this.showModalError = true;
         setTimeout(() => {
           this.showModalError = false;
-        }, this.timeErrorMsg);
+        }, timeErrorMsg);
         return;
       }
+
       this.newTask = {
         id: Date.now(),
         task: this.newTaskObject,
@@ -39,7 +42,9 @@ export default {
       };
       this.files.push(this.newTask);
     },
+
   },
+
 };
 </script>
 <style scoped></style>
