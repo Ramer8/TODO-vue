@@ -1,8 +1,9 @@
 <template>
-  <p class="error"><slot></slot></p>
+  <p class="error">
+    <slot></slot>
+  </p>
 </template>
 <script>
-export default {};
 </script>
 <style>
 .error {

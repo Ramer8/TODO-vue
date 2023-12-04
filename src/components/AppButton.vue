@@ -6,7 +6,6 @@
 <script>
 export default {
   props: {
-    toggle: String,
     disabled: Boolean,
     buttonClass: String,
   },

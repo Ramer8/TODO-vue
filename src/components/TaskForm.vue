@@ -1,39 +1,29 @@
 <template>
   <div class="container-form">
-    <div
-      v-show="files.length"
-      class="list"
-      v-for="taskObject in files"
-      :key="taskObject.id"
-    >
-      <div
-        :class="{
-          'no-text': taskObject.completed,
-          text: !taskObject.completed,
-        }"
-      >
-        <CheckBoxForm :toggleCheckBox="taskObject" />
+    <div v-show="files.length" class="list" v-for="taskObject in files" :key="taskObject.id">
+      <div :class="{
+        'no-text': taskObject.completed,
+        'text': !taskObject.completed,
+      }">
+        <AppCheckBoxForm :toggleCheckBox="taskObject" />
       </div>
       <hr class="lineFormDivisory" />
     </div>
-    <CustomButtons
-      buttonClass="secondary"
-      :disabled="isTaskListEmpty"
-      @click="removeTaskObject"
-      >Eliminar completados
-    </CustomButtons>
+    <AppButton buttonClass="secondary" :disabled="isTaskListEmpty" @click="removeTaskObject">Eliminar completados
+    </AppButton>
   </div>
 </template>
 <script>
-import CheckBoxForm from "./CheckBoxForm.vue";
-import CustomButtons from "./CustomButtons.vue";
+import AppCheckBoxForm from "./AppCheckBoxForm.vue";
+import AppButton from "./AppButton.vue";
 
 export default {
   props: {
     files: Object,
   },
 
-  components: { CustomButtons, CheckBoxForm },
+  components: { AppButton, AppCheckBoxForm },
+
   methods: {
     removeTaskObject() {
       this.$emit("removeTaskObject");
@@ -42,6 +32,7 @@ export default {
       this.addTaskObject();
     },
   },
+
   computed: {
     isTaskListEmpty() {
       const tasksCompleted = this.files?.filter(

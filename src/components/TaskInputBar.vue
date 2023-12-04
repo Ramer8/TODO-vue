@@ -1,29 +1,18 @@
 <template>
-  <div
-    class="container"
-    @submit.prevent="$emit('addTaskObject', newTaskObject)"
-  >
+  <div class="container" @submit.prevent="$emit('addTaskObject', newTask)">
     <div class="input-bar">
-      <input
-        type="text"
-        v-model="newTaskObject"
-        @keypress.enter="$emit('addTaskObject', newTaskObject)"
-      />
-      <CustomButtons
-        buttonClass="primary"
-        @click="$emit('addTaskObject', newTaskObject)"
-        >Añadir
-      </CustomButtons>
+      <input type="text" v-model="newTask" @keypress.enter="$emit('addTaskObject', newTask)" />
+      <AppButton buttonClass="primary" @click="$emit('addTaskObject', newTask)">Añadir
+      </AppButton>
     </div>
   </div>
-  <ErrorComponent v-show="showModalError"
-    >Ingrese una tarea por favor</ErrorComponent
-  >
+  <AppErrorComponent v-show="showModalError">Ingrese una tarea por favor
+  </AppErrorComponent>
 </template>
 
 <script>
-import CustomButtons from "./CustomButtons.vue";
-import ErrorComponent from "./ErrorComponent.vue";
+import AppButton from "./AppButton.vue";
+import AppErrorComponent from "./AppErrorComponent.vue";
 
 export default {
   props: {
@@ -33,13 +22,13 @@ export default {
   emits: ["addTaskObject"],
 
   components: {
-    CustomButtons,
-    ErrorComponent,
+    AppButton,
+    AppErrorComponent,
   },
 
   data() {
     return {
-      newTaskObject: "",
+      newTask: "",
     };
   },
 };

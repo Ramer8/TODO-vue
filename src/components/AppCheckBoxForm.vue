@@ -1,10 +1,5 @@
 <template>
-  <input
-    class="mycheck"
-    type="checkbox"
-    id="checkbox"
-    v-model="toggleCheckBox.completed"
-  />
+  <input class="mycheck" type="checkbox" id="checkbox" v-model="toggleCheckBox.completed" />
   <label class="label" for="checkbox">{{ toggleCheckBox.task }}</label>
 </template>
 <script>
@@ -12,7 +7,7 @@ export default {
   props: {
     toggleCheckBox: Object,
   },
-  emits: ["update:modelValue"],
+
 };
 </script>
 <style>

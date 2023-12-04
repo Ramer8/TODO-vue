@@ -1,21 +1,21 @@
 <template>
-  <InputBar @addTaskObject="addTaskObject" :showModalError="showModalError" />
+  <TaskInputBar @addTaskObject="addTaskObject" :showModalError="showModalError" />
   <TaskForm :files="files" @removeTaskObject="removeTaskObject" />
 </template>
 <script>
-import InputBar from "./components/InputBar.vue";
+import TaskInputBar from "./components/TaskInputBar.vue";
 import TaskForm from "./components/TaskForm.vue";
 
-const timeErrorMsg = 1000;
+const TIME_ERROR_MESSAGE = 1000;
 export default {
   components: {
-    InputBar,
+    TaskInputBar,
     TaskForm,
   },
   data() {
     return {
       files: [],
-      newTaskObject: "",
+      newTask: "",
       showModalError: false,
     };
   },
@@ -23,24 +23,24 @@ export default {
     removeTaskObject() {
       this.files = this.files.filter((taskObject) => !taskObject.completed);
     },
-    addTaskObject(data) {
-      this.newTaskObject = data;
+    addTaskObject(newTask) {
 
-      const emptyInput = this.newTaskObject.length;
-      if (emptyInput === 0) {
+      const isEmpty = newTask.length === 0
+
+      if (isEmpty) {
         this.showModalError = true;
+
         setTimeout(() => {
           this.showModalError = false;
-        }, timeErrorMsg);
+        }, TIME_ERROR_MESSAGE);
         return;
       }
-
-      this.newTask = {
+      const newTaskObject = {
         id: Date.now(),
-        task: this.newTaskObject,
+        task: newTask,
         completed: false,
       };
-      this.files.push(this.newTask);
+      this.files.push(newTaskObject);
     },
   },
 };

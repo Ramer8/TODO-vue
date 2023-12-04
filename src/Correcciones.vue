@@ -75,7 +75,7 @@ export default {
           this.$emit('addNewTask',
             {
                 id: Date.now(),
-                task: this.newTaskObject,
+                task: this.newTask,
                 completed: false,
             }
         )
@@ -85,7 +85,7 @@ export default {
 }
 </script>
 this.$emit('push', this.newTask); this.newTask = { id: Date.now(), task:
-this.newTaskObject, completed: false, }
+this.newTask, completed: false, }
 
 <p>
    READY! - TaskForm 
