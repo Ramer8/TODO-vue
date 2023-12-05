@@ -3,8 +3,7 @@
     <slot></slot>
   </p>
 </template>
-<script>
-</script>
+<script></script>
 <style>
 .error {
   color: beige;

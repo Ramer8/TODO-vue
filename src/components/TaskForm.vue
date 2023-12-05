@@ -1,21 +1,32 @@
 <template>
   <div class="container-form">
-    <div v-show="files.length" class="list" v-for="taskObject in files" :key="taskObject.id">
-      <div :class="{
-        'no-text': taskObject.completed,
-        'text': !taskObject.completed,
-      }">
+    <div
+      v-show="files.length"
+      class="list"
+      v-for="taskObject in files"
+      :key="taskObject.id"
+    >
+      <div
+        :class="{
+          'no-text': taskObject.completed,
+          text: !taskObject.completed,
+        }"
+      >
         <AppCheckBoxForm :toggleCheckBox="taskObject" />
       </div>
       <hr class="lineFormDivisory" />
     </div>
-    <AppButton buttonClass="secondary" :disabled="isTaskListEmpty" @click="removeTaskObject">Eliminar completados
+    <AppButton
+      buttonClass="secondary"
+      :disabled="isTaskListEmpty"
+      @click="removeTaskObject"
+      >Eliminar completados
     </AppButton>
   </div>
 </template>
 <script>
-import AppCheckBoxForm from "./AppCheckBoxForm.vue";
-import AppButton from "./AppButton.vue";
+import AppCheckBoxForm from './AppCheckBoxForm.vue';
+import AppButton from './AppButton.vue';
 
 export default {
   props: {
@@ -26,7 +37,7 @@ export default {
 
   methods: {
     removeTaskObject() {
-      this.$emit("removeTaskObject");
+      this.$emit('removeTaskObject');
     },
     handleSubmit() {
       this.addTaskObject();

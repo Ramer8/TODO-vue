@@ -4,18 +4,8 @@ module.exports = {
     es2021: true,
     node: true,
   },
-  extends: ["airbnb-base", "plugin:vue/vue3-essential", "prettier"],
-  overrides: [
-    {
-      env: {
-        node: true,
-      },
-      files: [".eslintrc.{js,cjs}"],
-      parserOptions: {
-        sourceType: "script",
-      },
-    },
-  ],
+  extends: ["plugin:vue/vue3-essential", "airbnb-base"],
+  overrides: [],
   parserOptions: {
     ecmaVersion: "latest",
     sourceType: "module",

@@ -1,10 +1,13 @@
 <template>
-  <TaskInputBar @addTaskObject="addTaskObject" :showModalError="showModalError" />
+  <TaskInputBar
+    @addTaskObject="addTaskObject"
+    :showModalError="showModalError"
+  />
   <TaskForm :files="files" @removeTaskObject="removeTaskObject" />
 </template>
 <script>
-import TaskInputBar from "./components/TaskInputBar.vue";
-import TaskForm from "./components/TaskForm.vue";
+import TaskInputBar from './components/TaskInputBar.vue';
+import TaskForm from './components/TaskForm.vue';
 
 const TIME_ERROR_MESSAGE = 1000;
 export default {
@@ -15,7 +18,7 @@ export default {
   data() {
     return {
       files: [],
-      newTask: "",
+      newTask: '',
       showModalError: false,
     };
   },
@@ -24,8 +27,7 @@ export default {
       this.files = this.files.filter((taskObject) => !taskObject.completed);
     },
     addTaskObject(newTask) {
-
-      const isEmpty = newTask.length === 0
+      const isEmpty = newTask.length === 0;
 
       if (isEmpty) {
         this.showModalError = true;

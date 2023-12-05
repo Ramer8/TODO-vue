@@ -1,25 +1,31 @@
 <template>
   <div class="container" @submit.prevent="$emit('addTaskObject', newTask)">
     <div class="input-bar">
-      <input type="text" v-model="newTask" @keypress.enter="$emit('addTaskObject', newTask)" />
-      <AppButton buttonClass="primary" @click="$emit('addTaskObject', newTask)">Añadir
+      <input
+        type="text"
+        v-model="newTask"
+        @keypress.enter="$emit('addTaskObject', newTask)"
+      />
+      <AppButton buttonClass="primary" @click="$emit('addTaskObject', newTask)"
+        >Añadir
       </AppButton>
     </div>
   </div>
-  <AppErrorComponent v-show="showModalError">Ingrese una tarea por favor
+  <AppErrorComponent v-show="showModalError"
+    >Ingrese una tarea por favor
   </AppErrorComponent>
 </template>
 
 <script>
-import AppButton from "./AppButton.vue";
-import AppErrorComponent from "./AppErrorComponent.vue";
+import AppButton from './AppButton.vue';
+import AppErrorComponent from './AppErrorComponent.vue';
 
 export default {
   props: {
     showModalError: Boolean,
   },
 
-  emits: ["addTaskObject"],
+  emits: ['addTaskObject'],
 
   components: {
     AppButton,
@@ -28,7 +34,7 @@ export default {
 
   data() {
     return {
-      newTask: "",
+      newTask: '',
     };
   },
 };
