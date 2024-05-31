@@ -63,16 +63,18 @@ export default {
   padding-top: 10px;
   width: 100%;
   box-shadow: 3px 3px 3px lightgray;
+  background-color: blueviolet;
 }
 
 .list {
-  width: 100%;
+  width: 95%;
   color: darkcyan;
   padding-top: 5px;
   padding-inline: 10px;
   position: relative;
   font-size: 17px;
   font-weight: 500;
+  overflow: scroll;
 }
 
 .no-text {
